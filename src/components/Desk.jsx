@@ -50,69 +50,123 @@ const Desk = ({ pickerOpen, setPickerOpen, createNote, monkeyMood, setMonkeyMood
         }}>
           
           {/* Left: Laptop & Monkey */}
-          <div style={{ display: 'flex', alignItems: 'flex-end', gap: '20px' }}>
+          <div style={{ display: 'flex', alignItems: 'flex-end', gap: '-10px', position: 'relative' }}>
             
-            {/* Monkey Character placeholder (we can enhance this as SVG) */}
+            {/* Monkey Character */}
             <div 
-              onClick={() => setMonkeyMood(monkeyMood === 'idle' ? 'working' : 'idle')}
+              onClick={() => setMonkeyMood(monkeyMood === 'eating' ? 'sleeping' : 'eating')}
               style={{
-                width: '160px',
-                height: '160px',
+                width: '180px',
+                height: '180px',
                 cursor: 'pointer',
-                position: 'relative'
+                position: 'relative',
+                zIndex: 1, // behind laptop
+                marginRight: '-30px' // move closer to laptop
               }}
             >
-              <svg viewBox="0 0 100 100" style={{ width: '100%', height: '100%' }}>
+              {/* Zzz animation for sleeping */}
+              <AnimatePresence>
+                {monkeyMood === 'sleeping' && (
+                  <motion.div 
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: -20, transition: { yoyo: Infinity, duration: 1.5 } }}
+                    exit={{ opacity: 0 }}
+                    style={{ position: 'absolute', top: '10%', right: '10%', fontFamily: 'var(--font-handwriting)', fontSize: '24px', fontWeight: 'bold', color: 'var(--stroke)' }}
+                  >
+                    Zzz...
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+              <svg viewBox="0 0 100 100" style={{ width: '100%', height: '100%', overflow: 'visible' }}>
                 {/* Body / Suit */}
-                <path d="M 20 100 C 20 60, 80 60, 80 100" fill="#4a6ca7" stroke="var(--stroke)" strokeWidth="3" />
+                <path d="M 15 100 C 15 50, 85 50, 85 100" fill="#4a6ca7" stroke="var(--stroke)" strokeWidth="3" />
                 {/* Tie */}
-                <path d="M 45 60 L 55 60 L 50 80 Z" fill="#d33" stroke="var(--stroke)" strokeWidth="2" />
+                <path d="M 45 60 L 55 60 L 50 85 Z" fill="#d33" stroke="var(--stroke)" strokeWidth="2" />
                 
                 {/* Head */}
-                <circle cx="50" cy="40" r="25" fill="#a47250" stroke="var(--stroke)" strokeWidth="3" />
+                <circle cx="50" cy="40" r="28" fill="#a47250" stroke="var(--stroke)" strokeWidth="3" />
                 {/* Ears */}
-                <circle cx="20" cy="40" r="10" fill="#a47250" stroke="var(--stroke)" strokeWidth="3" />
-                <circle cx="80" cy="40" r="10" fill="#a47250" stroke="var(--stroke)" strokeWidth="3" />
+                <circle cx="15" cy="40" r="12" fill="#a47250" stroke="var(--stroke)" strokeWidth="3" />
+                <circle cx="85" cy="40" r="12" fill="#a47250" stroke="var(--stroke)" strokeWidth="3" />
                 
                 {/* Face area */}
-                <circle cx="50" cy="45" r="18" fill="#e2c4a3" stroke="var(--stroke)" strokeWidth="2" />
+                <path d="M 30 40 C 30 25, 70 25, 70 40 C 75 55, 25 55, 30 40 Z" fill="#e2c4a3" stroke="var(--stroke)" strokeWidth="2" />
                 
                 {/* Eyes */}
-                {monkeyMood === 'working' ? (
+                {monkeyMood === 'sleeping' ? (
                   <>
-                    <path d="M 38 40 L 44 40" stroke="var(--stroke)" strokeWidth="3" strokeLinecap="round" />
-                    <path d="M 56 40 L 62 40" stroke="var(--stroke)" strokeWidth="3" strokeLinecap="round" />
-                    {/* Hand munching */}
-                    <path d="M 50 55 C 60 70, 70 80, 80 70" fill="#a47250" stroke="var(--stroke)" strokeWidth="3" />
+                    <path d="M 35 38 43 38" stroke="var(--stroke)" strokeWidth="3" strokeLinecap="round" />
+                    <path d="M 57 38 65 38" stroke="var(--stroke)" strokeWidth="3" strokeLinecap="round" />
                   </>
                 ) : (
                   <>
-                    <circle cx="42" cy="40" r="3" fill="var(--stroke)" />
-                    <circle cx="58" cy="40" r="3" fill="var(--stroke)" />
+                    <circle cx="40" cy="38" r="4" fill="var(--stroke)" />
+                    <circle cx="60" cy="38" r="4" fill="var(--stroke)" />
                   </>
                 )}
                 
-                {/* Nose/Mouth */}
-                <path d="M 47 48 C 50 50, 53 48, 53 48" fill="transparent" stroke="var(--stroke)" strokeWidth="2" />
+                {/* Snout/Mouth */}
+                <ellipse cx="50" cy="50" rx="14" ry="10" fill="#d2a884" stroke="var(--stroke)" strokeWidth="2" />
+                {monkeyMood === 'sleeping' ? (
+                  <path d="M 45 52 C 50 50, 55 52, 55 52" fill="transparent" stroke="var(--stroke)" strokeWidth="2" />
+                ) : (
+                  <path d="M 45 50 C 50 55, 55 50, 55 50" fill="transparent" stroke="var(--stroke)" strokeWidth="2" />
+                )}
+
+                {/* Animation logic for arms and banana */}
+                {monkeyMood === 'eating' ? (
+                  <g className="eating-animation">
+                    {/* Banana in hand */}
+                    <path d="M 68 62 C 60 70, 60 85, 68 90" fill="#facc15" stroke="var(--stroke)" strokeWidth="2" />
+                    <path d="M 68 62 C 65 65, 65 75, 62 80" fill="#fef08a" stroke="var(--stroke)" strokeWidth="1" /> {/* peeled */}
+                    {/* Arm moving up */}
+                    <path d="M 85 85 C 80 80, 75 75, 70 75" fill="none" stroke="#a47250" strokeWidth="12" strokeLinecap="round" />
+                    <path d="M 85 85 C 80 80, 75 75, 70 75" fill="none" stroke="var(--stroke)" strokeWidth="16" strokeLinecap="round" opacity="0.2" /> {/* outline fake */}
+                  </g>
+                ) : (
+                  <>
+                    {/* Sleeping: Arms resting down */}
+                    <path d="M 85 80 Q 95 90 90 100" fill="none" stroke="#4a6ca7" strokeWidth="14" strokeLinecap="round" />
+                  </>
+                )}
               </svg>
             </div>
 
             {/* Laptop */}
             <div style={{
-              width: '140px',
-              height: '100px',
+              width: '160px',
+              height: '110px',
               backgroundColor: '#a9b1b7',
-              border: '4px solid var(--stroke)',
-              borderRadius: '8px',
-              marginBottom: '-20px',
+              border: '5px solid var(--stroke)',
+              borderRadius: '10px',
+              marginBottom: '-25px',
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center',
+              position: 'relative',
+              zIndex: 2, // in front of monkey
               transform: 'scaleX(-1)'
             }}>
-               <div style={{ width: '30px', height: '30px', border: '3px solid var(--stroke)', borderRadius: '50%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                 <div style={{ width: '15px', height: '15px', borderRadius: '50% 0', background: 'var(--stroke)', transform: 'rotate(45deg)' }} />
+               <div style={{ width: '35px', height: '35px', border: '3px solid var(--stroke)', borderRadius: '50%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                 <div style={{ width: '18px', height: '18px', borderRadius: '50% 0', background: 'var(--stroke)', transform: 'rotate(45deg)' }} />
                </div>
+
+               {/* Render Banana on table if sleeping */}
+               {monkeyMood === 'sleeping' && (
+                 <div style={{
+                   position: 'absolute',
+                   bottom: '-15px',
+                   right: '-40px',
+                   width: '30px',
+                   height: '40px',
+                   transform: 'rotate(-45deg)'
+                 }}>
+                   <svg viewBox="0 0 50 50">
+                     <path d="M 10 10 C 0 30, 20 60, 40 40" fill="#facc15" stroke="var(--stroke)" strokeWidth="3" />
+                   </svg>
+                 </div>
+               )}
             </div>
             
           </div>

@@ -23,7 +23,7 @@ function App() {
   const [activeNote, setActiveNote] = useState(null); // The full note object if being edited
   const [pickerOpen, setPickerOpen] = useState(false);
   const [placingNote, setPlacingNote] = useState(null); // ID of the note currently being placed on board
-  const [monkeyMood, setMonkeyMood] = useState('idle');
+  const [monkeyMood, setMonkeyMood] = useState('eating');
 
   useEffect(() => {
     localStorage.setItem('monkey_notes', JSON.stringify(notes));
