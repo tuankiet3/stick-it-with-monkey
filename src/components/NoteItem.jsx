@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const NoteItem = ({ note, onClick }) => {
+const NoteItem = ({ note, onClick, updateNote }) => {
   // Styles based on note type
   const getNoteStyle = () => {
     switch(note.type) {
@@ -34,13 +34,24 @@ const NoteItem = ({ note, onClick }) => {
         e.stopPropagation();
         onClick();
       }}
-      initial={{ scale: 0 }}
-      animate={{ scale: 1 }}
+      drag
+      dragMomentum={false}
+      onDragEnd={(e, info) => {
+        if (updateNote) {
+          updateNote(note.id, { 
+            x: (note.x || 0) + info.offset.x, 
+            y: (note.y || 0) + info.offset.y 
+          });
+        }
+      }}
+      initial={{ scale: 0, x: note.x || 0, y: note.y || 0 }}
+      animate={{ scale: 1, x: note.x || 0, y: note.y || 0, rotate: note.id.charCodeAt(0) % 10 - 5 }}
+      whileDrag={{ scale: 1.1, zIndex: 100 }}
       className={`hand-drawn shadow`}
       style={{
         position: 'absolute',
-        left: note.x ? `${note.x}px` : '50%',
-        top: note.y ? `${note.y}px` : '50%',
+        left: 0,
+        top: 0,
         width: '60px',
         height: '70px',
         ...getNoteStyle(),
@@ -48,7 +59,6 @@ const NoteItem = ({ note, onClick }) => {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        transform: `rotate(${note.id.charCodeAt(0) % 10 - 5}deg)`, // Slight random rotation
         cursor: 'pointer'
       }}
     >

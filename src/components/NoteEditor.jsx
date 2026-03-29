@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { CheckCircle2, Pin, Trash2 } from 'lucide-react';
+import { CheckCircle2, Pin, Trash2, PenLine } from 'lucide-react';
 
 const NoteEditor = ({ note, updateNote, pinNote, closeNote, deleteNote }) => {
   const [tool, setTool] = useState('none'); // 'none', 'highlight', 'sticker'
@@ -26,7 +26,9 @@ const NoteEditor = ({ note, updateNote, pinNote, closeNote, deleteNote }) => {
   };
 
   return (
-    <div style={{
+    <div 
+      onClick={closeNote}
+      style={{
       position: 'absolute',
       top: 0, left: 0, width: '100%', height: '100%',
       backgroundColor: 'rgba(247, 232, 207, 0.5)',
@@ -110,13 +112,15 @@ const NoteEditor = ({ note, updateNote, pinNote, closeNote, deleteNote }) => {
               onClick={() => setTool(tool === 'highlight' ? 'none' : 'highlight')}
               className="hand-drawn"
               style={{
-                width: '40px', height: '40px',
+                width: '45px', height: '45px',
                 backgroundColor: tool === 'highlight' ? '#d34343' : 'white',
                 display: 'flex', justifyContent: 'center', alignItems: 'center',
-                boxShadow: '0 4px 0 rgba(0,0,0,0.1)'
+                boxShadow: '0 4px 0 rgba(0,0,0,0.1)',
+                color: tool === 'highlight' ? 'white' : '#d34343'
               }}
+              title="Highlight Tool"
             >
-              <div style={{ width: '20px', height: '10px', background: tool === 'highlight' ? 'white' : '#d34343', borderRadius: '4px' }}></div>
+              <PenLine size={24} />
             </button>
           )}
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import NoteItem from './NoteItem';
 
-const Corkboard = ({ notes, onBoardClick, onNoteClick, placingNote }) => {
+const Corkboard = ({ notes, onBoardClick, onNoteClick, placingNote, updateNote }) => {
   return (
     <div 
       style={{ 
@@ -35,6 +35,7 @@ const Corkboard = ({ notes, onBoardClick, onNoteClick, placingNote }) => {
             key={note.id} 
             note={note} 
             onClick={() => onNoteClick(note.id)} 
+            updateNote={updateNote}
           />
         ))}
       </div>

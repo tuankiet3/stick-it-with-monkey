@@ -118,11 +118,16 @@ const Desk = ({ pickerOpen, setPickerOpen, createNote, monkeyMood, setMonkeyMood
                 {monkeyMood === 'eating' ? (
                   <g className="eating-animation">
                     {/* Banana in hand */}
-                    <path d="M 68 62 C 60 70, 60 85, 68 90" fill="#facc15" stroke="var(--stroke)" strokeWidth="2" />
-                    <path d="M 68 62 C 65 65, 65 75, 62 80" fill="#fef08a" stroke="var(--stroke)" strokeWidth="1" /> {/* peeled */}
+                    <path d="M 60 70 Q 55 85 75 92" fill="none" stroke="#facc15" strokeWidth="8" strokeLinecap="round" />
+                    {/* Banana peel lines */}
+                    <path d="M 60 70 Q 55 78 54 85" fill="none" stroke="#fef08a" strokeWidth="3" strokeLinecap="round" />
+                    <path d="M 60 70 Q 62 80 64 88" fill="none" stroke="#fef08a" strokeWidth="3" strokeLinecap="round" />
+                    {/* Banana Tip */}
+                    <path d="M 72 90 L 76 92" stroke="var(--stroke)" strokeWidth="3" strokeLinecap="round"/>
+
                     {/* Arm moving up */}
-                    <path d="M 85 85 C 80 80, 75 75, 70 75" fill="none" stroke="#a47250" strokeWidth="12" strokeLinecap="round" />
-                    <path d="M 85 85 C 80 80, 75 75, 70 75" fill="none" stroke="var(--stroke)" strokeWidth="16" strokeLinecap="round" opacity="0.2" /> {/* outline fake */}
+                    <path d="M 85 85 Q 75 80 70 75" fill="none" stroke="#a47250" strokeWidth="12" strokeLinecap="round" />
+                    <path d="M 85 85 Q 75 80 70 75" fill="none" stroke="var(--stroke)" strokeWidth="16" strokeLinecap="round" opacity="0.2" /> {/* outline fake */}
                   </g>
                 ) : (
                   <>
@@ -158,12 +163,14 @@ const Desk = ({ pickerOpen, setPickerOpen, createNote, monkeyMood, setMonkeyMood
                    position: 'absolute',
                    bottom: '-15px',
                    right: '-40px',
-                   width: '30px',
+                   width: '40px',
                    height: '40px',
-                   transform: 'rotate(-45deg)'
+                   transform: 'rotate(-20deg)'
                  }}>
                    <svg viewBox="0 0 50 50">
-                     <path d="M 10 10 C 0 30, 20 60, 40 40" fill="#facc15" stroke="var(--stroke)" strokeWidth="3" />
+                     <path d="M 10 25 Q 25 45 40 25" fill="none" stroke="#facc15" strokeWidth="10" strokeLinecap="round" />
+                     <path d="M 10 25 Q 25 45 40 25" fill="none" stroke="var(--stroke)" strokeWidth="12" strokeLinecap="round" opacity="0.2" />
+                     <path d="M 37 27 L 42 21" stroke="var(--stroke)" strokeWidth="3" strokeLinecap="round"/> {/* Tip */}
                    </svg>
                  </div>
                )}

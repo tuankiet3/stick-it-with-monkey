@@ -123,6 +123,7 @@ function App() {
         onBoardClick={handleBoardClick} 
         onNoteClick={openNote}
         placingNote={placingNote}
+        updateNote={updateNote}
       />
       
       <Desk 
