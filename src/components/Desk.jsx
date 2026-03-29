@@ -49,70 +49,24 @@ const Desk = ({ pickerOpen, setPickerOpen, createNote, monkeyMood, setMonkeyMood
           padding: '0 20px'
         }}>
 
-        {/* --- DESK DECORATIONS (5 items) --- */}
-        {/* Plant (far left) */}
-        <div style={{ position: 'absolute', left: '20px', bottom: '10px', zIndex: 1, pointerEvents: 'none' }}>
-          <svg width="60" height="70" viewBox="0 0 50 70" style={{ overflow: 'visible' }}>
-            <path d="M 15 40 L 35 40 L 30 65 L 20 65 Z" fill="#c49779" stroke="var(--stroke)" strokeWidth="2" /> {/* pot */}
-            <path d="M 25 40 C 15 30, 15 15, 25 10 C 35 15, 35 30, 25 40 Z" fill="#7ba36e" stroke="var(--stroke)" strokeWidth="2" /> {/* leaf 1 */}
-            <path d="M 20 38 C 5 30, 5 15, 10 10 C 20 15, 20 30, 20 38 Z" fill="#8bc977" stroke="var(--stroke)" strokeWidth="2" /> {/* leaf 2 */}
-            <path d="M 30 38 C 45 30, 45 15, 40 10 C 30 15, 30 30, 30 38 Z" fill="#8bc977" stroke="var(--stroke)" strokeWidth="2" /> {/* leaf 3 */}
-          </svg>
-        </div>
-
-        {/* Books (left center) */}
-        <div style={{ position: 'absolute', left: '100px', bottom: '15px', zIndex: 2, pointerEvents: 'none' }}>
-          <svg width="60" height="40" viewBox="0 0 80 50">
-            <rect x="5" y="10" width="65" height="12" fill="#a3bccc" stroke="var(--stroke)" strokeWidth="2" transform="rotate(-3)" />
-            <rect x="15" y="20" width="55" height="12" fill="#7ba36e" stroke="var(--stroke)" strokeWidth="2" />
-            <rect x="10" y="32" width="60" height="14" fill="#e27c7c" stroke="var(--stroke)" strokeWidth="2" />
-          </svg>
-        </div>
-
-        {/* Coffee Mug (inner left near monkey) */}
-        <div style={{ position: 'absolute', left: '180px', bottom: '15px', zIndex: 4, pointerEvents: 'none' }}>
-          <svg width="40" height="40" viewBox="0 0 50 50" style={{ overflow: 'visible' }}>
-            <g className="steam-animation">
-              <path d="M 15 15 Q 18 10 15 5 T 15 -5" fill="none" stroke="#ccc" strokeWidth="2" strokeLinecap="round" />
-              <path d="M 25 15 Q 22 10 25 5 T 25 -5" fill="none" stroke="#ccc" strokeWidth="2" strokeLinecap="round" />
-            </g>
-            <path d="M 30 25 C 38 25, 38 35, 30 35" fill="none" stroke="var(--stroke)" strokeWidth="2" /> {/* handle */}
-            <path d="M 10 20 L 10 40 C 10 45, 30 45, 30 40 L 30 20 Z" fill="#eb8d7f" stroke="var(--stroke)" strokeWidth="2" />
-            <ellipse cx="20" cy="20" rx="10" ry="4" fill="#6b4c3a" stroke="var(--stroke)" strokeWidth="2" /> {/* coffee inside */}
-          </svg>
-        </div>
-
-        {/* Desk Lamp (right center) */}
-        <div style={{ position: 'absolute', right: '230px', bottom: '15px', zIndex: 1, pointerEvents: 'none' }}>
-          <svg width="80" height="120" viewBox="0 0 100 120" style={{ overflow: 'visible' }}>
-            <path d="M 30 110 L 70 110 L 65 100 L 35 100 Z" fill="#586776" stroke="var(--stroke)" strokeWidth="2" /> {/* base */}
-            <path d="M 50 100 L 50 50" fill="none" stroke="var(--stroke)" strokeWidth="6" /> {/* stand */}
-            <path d="M 50 50 L 30 20" fill="none" stroke="var(--stroke)" strokeWidth="6" /> {/* arm */}
-            <g transform="translate(10, -5) rotate(-15 20 20)">
-              <path d="M -10 30 Q 20 0 50 30 Z" fill="#eacb54" stroke="var(--stroke)" strokeWidth="2" /> {/* hood */}
-              <circle cx="20" cy="30" r="10" fill="#fff" stroke="var(--stroke)" strokeWidth="2" /> {/* bulb */}
-            </g>
-          </svg>
-        </div>
-
-        {/* Glasses (far right) */}
-        <div style={{ position: 'absolute', right: '30px', bottom: '10px', zIndex: 6, pointerEvents: 'none' }}>
-          <svg width="50" height="20" viewBox="0 0 100 40" style={{ overflow: 'visible' }}>
-            <rect x="10" y="10" width="35" height="25" rx="5" fill="#eaf4f4" stroke="var(--stroke)" strokeWidth="3" />
-            <rect x="55" y="10" width="35" height="25" rx="5" fill="#eaf4f4" stroke="var(--stroke)" strokeWidth="3" />
-            <path d="M 45 20 L 55 20" fill="none" stroke="var(--stroke)" strokeWidth="3" />
-            <path d="M 10 15 L 0 5" fill="none" stroke="var(--stroke)" strokeWidth="3" />
-            <path d="M 90 15 L 100 5" fill="none" stroke="var(--stroke)" strokeWidth="3" />
-          </svg>
-        </div>
-
-
         {/* --- INTERACTIVE DESK CONTENT --- */}
           
-          {/* Left: Laptop & Monkey */}
-          <div style={{ display: 'flex', alignItems: 'flex-end', gap: '-10px', position: 'relative' }}>
+          {/* Left: Plant, [Monkey & Laptop], Coffee, Books */}
+          <div style={{ display: 'flex', alignItems: 'flex-end', gap: '20px', position: 'relative' }}>
             
-            {/* Monkey Character */}
+            {/* Plant */}
+            <div style={{ zIndex: 1, pointerEvents: 'none', marginBottom: '10px' }}>
+              <svg width="60" height="70" viewBox="0 0 50 70" style={{ overflow: 'visible' }}>
+                <path d="M 15 40 L 35 40 L 30 65 L 20 65 Z" fill="#c49779" stroke="var(--stroke)" strokeWidth="2" /> {/* pot */}
+                <path d="M 25 40 C 15 30, 15 15, 25 10 C 35 15, 35 30, 25 40 Z" fill="#7ba36e" stroke="var(--stroke)" strokeWidth="2" /> {/* leaf 1 */}
+                <path d="M 20 38 C 5 30, 5 15, 10 10 C 20 15, 20 30, 20 38 Z" fill="#8bc977" stroke="var(--stroke)" strokeWidth="2" /> {/* leaf 2 */}
+                <path d="M 30 38 C 45 30, 45 15, 40 10 C 30 15, 30 30, 30 38 Z" fill="#8bc977" stroke="var(--stroke)" strokeWidth="2" /> {/* leaf 3 */}
+              </svg>
+            </div>
+
+            {/* Monkey & Laptop Group */}
+            <div style={{ display: 'flex', alignItems: 'flex-end' }}>
+              {/* Monkey Character */}
             <div 
               onClick={() => {
                 if (monkeyMood === 'eating') setMonkeyMood('sleeping');
@@ -272,14 +226,51 @@ const Desk = ({ pickerOpen, setPickerOpen, createNote, monkeyMood, setMonkeyMood
                  </div>
                )}
             </div>
+            </div>
+
+            {/* Coffee Mug */}
+            <div style={{ zIndex: 4, pointerEvents: 'none', marginBottom: '15px' }}>
+              <svg width="40" height="40" viewBox="0 0 50 50" style={{ overflow: 'visible' }}>
+                <g className="steam-animation">
+                  <path d="M 15 15 Q 18 10 15 5 T 15 -5" fill="none" stroke="#ccc" strokeWidth="2" strokeLinecap="round" />
+                  <path d="M 25 15 Q 22 10 25 5 T 25 -5" fill="none" stroke="#ccc" strokeWidth="2" strokeLinecap="round" />
+                </g>
+                <path d="M 30 25 C 38 25, 38 35, 30 35" fill="none" stroke="var(--stroke)" strokeWidth="2" /> {/* handle */}
+                <path d="M 10 20 L 10 40 C 10 45, 30 45, 30 40 L 30 20 Z" fill="#eb8d7f" stroke="var(--stroke)" strokeWidth="2" />
+                <ellipse cx="20" cy="20" rx="10" ry="4" fill="#6b4c3a" stroke="var(--stroke)" strokeWidth="2" /> {/* coffee inside */}
+              </svg>
+            </div>
+
+            {/* Books */}
+            <div style={{ zIndex: 2, pointerEvents: 'none', marginBottom: '15px' }}>
+              <svg width="60" height="40" viewBox="0 0 80 50">
+                <rect x="5" y="10" width="65" height="12" fill="#a3bccc" stroke="var(--stroke)" strokeWidth="2" transform="rotate(-3)" />
+                <rect x="15" y="20" width="55" height="12" fill="#7ba36e" stroke="var(--stroke)" strokeWidth="2" />
+                <rect x="10" y="32" width="60" height="14" fill="#e27c7c" stroke="var(--stroke)" strokeWidth="2" />
+              </svg>
+            </div>
             
           </div>
 
-          {/* Right: Notes Stack and Pen Cup */}
-          <div style={{ display: 'flex', alignItems: 'flex-end', gap: '30px', paddingBottom: '20px' }}>
+          {/* Right: Desk Lamp, Folders, Glasses, Pen Cup */}
+          <div style={{ display: 'flex', alignItems: 'flex-end', gap: '20px', paddingBottom: '20px' }}>
+
+            {/* Desk Lamp */}
+            <div style={{ zIndex: 1, pointerEvents: 'none' }}>
+              <svg width="80" height="120" viewBox="0 0 100 120" style={{ overflow: 'visible' }}>
+                <path d="M 30 110 L 70 110 L 65 100 L 35 100 Z" fill="#586776" stroke="var(--stroke)" strokeWidth="2" /> {/* base */}
+                <path d="M 50 100 L 50 50" fill="none" stroke="var(--stroke)" strokeWidth="6" /> {/* stand */}
+                <path d="M 50 50 L 30 20" fill="none" stroke="var(--stroke)" strokeWidth="6" /> {/* arm */}
+                <g transform="translate(10, -5) rotate(-15 20 20)">
+                  <path d="M -10 30 Q 20 0 50 30 Z" fill="#eacb54" stroke="var(--stroke)" strokeWidth="2" /> {/* hood */}
+                  <circle cx="20" cy="30" r="10" fill="#fff" stroke="var(--stroke)" strokeWidth="2" /> {/* bulb */}
+                </g>
+              </svg>
+            </div>
             
-            {/* Context Menu for Notes */}
-            <AnimatePresence>
+            {/* Context Menu & Folders */}
+            <div style={{ position: 'relative' }}>
+              <AnimatePresence>
               {pickerOpen && (
                 <motion.div 
                   initial={{ opacity: 0, y: 20, scale: 0.8 }}
@@ -345,6 +336,18 @@ const Desk = ({ pickerOpen, setPickerOpen, createNote, monkeyMood, setMonkeyMood
                 <div style={{ width: '30px', height: '4px', background: 'var(--stroke)' }}></div>
               )}
             </button>
+            </div>
+
+            {/* Glasses */}
+            <div style={{ zIndex: 6, pointerEvents: 'none', marginBottom: '10px' }}>
+              <svg width="50" height="20" viewBox="0 0 100 40" style={{ overflow: 'visible' }}>
+                <rect x="10" y="10" width="35" height="25" rx="5" fill="#eaf4f4" stroke="var(--stroke)" strokeWidth="3" />
+                <rect x="55" y="10" width="35" height="25" rx="5" fill="#eaf4f4" stroke="var(--stroke)" strokeWidth="3" />
+                <path d="M 45 20 L 55 20" fill="none" stroke="var(--stroke)" strokeWidth="3" />
+                <path d="M 10 15 L 0 5" fill="none" stroke="var(--stroke)" strokeWidth="3" />
+                <path d="M 90 15 L 100 5" fill="none" stroke="var(--stroke)" strokeWidth="3" />
+              </svg>
+            </div>
 
             {/* Pen Cup / Help Button */}
             <button 
