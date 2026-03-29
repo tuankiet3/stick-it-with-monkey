@@ -273,14 +273,14 @@ const Desk = ({ pickerOpen, setPickerOpen, createNote, monkeyMood, setMonkeyMood
               <AnimatePresence>
               {pickerOpen && (
                 <motion.div 
-                  initial={{ opacity: 0, y: 20, scale: 0.8 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, y: 20, scale: 0.8 }}
+                  initial={{ opacity: 0, y: 20, scale: 0.8, x: '-50%' }}
+                  animate={{ opacity: 1, y: 0, scale: 1, x: '-50%' }}
+                  exit={{ opacity: 0, y: 20, scale: 0.8, x: '-50%' }}
                   className="hand-drawn shadow"
                   style={{
                     position: 'absolute',
                     bottom: '90px',
-                    right: '100px',
+                    left: '50%',
                     backgroundColor: 'white',
                     padding: '15px',
                     borderRadius: '20px',
@@ -298,7 +298,8 @@ const Desk = ({ pickerOpen, setPickerOpen, createNote, monkeyMood, setMonkeyMood
                   <div style={{
                     position: 'absolute',
                     bottom: '-15px',
-                    right: '30px',
+                    left: '50%',
+                    marginLeft: '-15px',
                     width: '30px',
                     height: '30px',
                     background: 'white',
