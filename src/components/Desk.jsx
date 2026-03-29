@@ -48,6 +48,66 @@ const Desk = ({ pickerOpen, setPickerOpen, createNote, monkeyMood, setMonkeyMood
           zIndex: 4,
           padding: '0 20px'
         }}>
+
+        {/* --- DESK DECORATIONS (5 items) --- */}
+        {/* Plant (far left) */}
+        <div style={{ position: 'absolute', left: '20px', bottom: '10px', zIndex: 1, pointerEvents: 'none' }}>
+          <svg width="60" height="70" viewBox="0 0 50 70" style={{ overflow: 'visible' }}>
+            <path d="M 15 40 L 35 40 L 30 65 L 20 65 Z" fill="#c49779" stroke="var(--stroke)" strokeWidth="2" /> {/* pot */}
+            <path d="M 25 40 C 15 30, 15 15, 25 10 C 35 15, 35 30, 25 40 Z" fill="#7ba36e" stroke="var(--stroke)" strokeWidth="2" /> {/* leaf 1 */}
+            <path d="M 20 38 C 5 30, 5 15, 10 10 C 20 15, 20 30, 20 38 Z" fill="#8bc977" stroke="var(--stroke)" strokeWidth="2" /> {/* leaf 2 */}
+            <path d="M 30 38 C 45 30, 45 15, 40 10 C 30 15, 30 30, 30 38 Z" fill="#8bc977" stroke="var(--stroke)" strokeWidth="2" /> {/* leaf 3 */}
+          </svg>
+        </div>
+
+        {/* Books (left center) */}
+        <div style={{ position: 'absolute', left: '100px', bottom: '15px', zIndex: 2, pointerEvents: 'none' }}>
+          <svg width="60" height="40" viewBox="0 0 80 50">
+            <rect x="5" y="10" width="65" height="12" fill="#a3bccc" stroke="var(--stroke)" strokeWidth="2" transform="rotate(-3)" />
+            <rect x="15" y="20" width="55" height="12" fill="#7ba36e" stroke="var(--stroke)" strokeWidth="2" />
+            <rect x="10" y="32" width="60" height="14" fill="#e27c7c" stroke="var(--stroke)" strokeWidth="2" />
+          </svg>
+        </div>
+
+        {/* Coffee Mug (inner left near monkey) */}
+        <div style={{ position: 'absolute', left: '180px', bottom: '15px', zIndex: 4, pointerEvents: 'none' }}>
+          <svg width="40" height="40" viewBox="0 0 50 50" style={{ overflow: 'visible' }}>
+            <g className="steam-animation">
+              <path d="M 15 15 Q 18 10 15 5 T 15 -5" fill="none" stroke="#ccc" strokeWidth="2" strokeLinecap="round" />
+              <path d="M 25 15 Q 22 10 25 5 T 25 -5" fill="none" stroke="#ccc" strokeWidth="2" strokeLinecap="round" />
+            </g>
+            <path d="M 30 25 C 38 25, 38 35, 30 35" fill="none" stroke="var(--stroke)" strokeWidth="2" /> {/* handle */}
+            <path d="M 10 20 L 10 40 C 10 45, 30 45, 30 40 L 30 20 Z" fill="#eb8d7f" stroke="var(--stroke)" strokeWidth="2" />
+            <ellipse cx="20" cy="20" rx="10" ry="4" fill="#6b4c3a" stroke="var(--stroke)" strokeWidth="2" /> {/* coffee inside */}
+          </svg>
+        </div>
+
+        {/* Desk Lamp (right center) */}
+        <div style={{ position: 'absolute', right: '230px', bottom: '15px', zIndex: 1, pointerEvents: 'none' }}>
+          <svg width="80" height="120" viewBox="0 0 100 120" style={{ overflow: 'visible' }}>
+            <path d="M 30 110 L 70 110 L 65 100 L 35 100 Z" fill="#586776" stroke="var(--stroke)" strokeWidth="2" /> {/* base */}
+            <path d="M 50 100 L 50 50" fill="none" stroke="var(--stroke)" strokeWidth="6" /> {/* stand */}
+            <path d="M 50 50 L 30 20" fill="none" stroke="var(--stroke)" strokeWidth="6" /> {/* arm */}
+            <g transform="translate(10, -5) rotate(-15 20 20)">
+              <path d="M -10 30 Q 20 0 50 30 Z" fill="#eacb54" stroke="var(--stroke)" strokeWidth="2" /> {/* hood */}
+              <circle cx="20" cy="30" r="10" fill="#fff" stroke="var(--stroke)" strokeWidth="2" /> {/* bulb */}
+            </g>
+          </svg>
+        </div>
+
+        {/* Glasses (far right) */}
+        <div style={{ position: 'absolute', right: '30px', bottom: '10px', zIndex: 6, pointerEvents: 'none' }}>
+          <svg width="50" height="20" viewBox="0 0 100 40" style={{ overflow: 'visible' }}>
+            <rect x="10" y="10" width="35" height="25" rx="5" fill="#eaf4f4" stroke="var(--stroke)" strokeWidth="3" />
+            <rect x="55" y="10" width="35" height="25" rx="5" fill="#eaf4f4" stroke="var(--stroke)" strokeWidth="3" />
+            <path d="M 45 20 L 55 20" fill="none" stroke="var(--stroke)" strokeWidth="3" />
+            <path d="M 10 15 L 0 5" fill="none" stroke="var(--stroke)" strokeWidth="3" />
+            <path d="M 90 15 L 100 5" fill="none" stroke="var(--stroke)" strokeWidth="3" />
+          </svg>
+        </div>
+
+
+        {/* --- INTERACTIVE DESK CONTENT --- */}
           
           {/* Left: Laptop & Monkey */}
           <div style={{ display: 'flex', alignItems: 'flex-end', gap: '-10px', position: 'relative' }}>
@@ -56,7 +116,8 @@ const Desk = ({ pickerOpen, setPickerOpen, createNote, monkeyMood, setMonkeyMood
             <div 
               onClick={() => {
                 if (monkeyMood === 'eating') setMonkeyMood('sleeping');
-                else if (monkeyMood === 'sleeping') setMonkeyMood('playing');
+                else if (monkeyMood === 'sleeping') setMonkeyMood('typing');
+                else if (monkeyMood === 'typing') setMonkeyMood('playing');
                 else setMonkeyMood('eating');
               }}
               style={{
@@ -108,6 +169,11 @@ const Desk = ({ pickerOpen, setPickerOpen, createNote, monkeyMood, setMonkeyMood
                     <path d="M 35 40 Q 40 32 45 40" fill="none" stroke="var(--stroke)" strokeWidth="3" strokeLinecap="round" />
                     <path d="M 55 40 Q 60 32 65 40" fill="none" stroke="var(--stroke)" strokeWidth="3" strokeLinecap="round" />
                   </>
+                ) : monkeyMood === 'typing' ? (
+                  <>
+                    <circle cx="38" cy="38" r="5" fill="var(--stroke)" />
+                    <circle cx="62" cy="38" r="5" fill="var(--stroke)" />
+                  </>
                 ) : (
                   <>
                     <circle cx="40" cy="38" r="4" fill="var(--stroke)" />
@@ -121,6 +187,8 @@ const Desk = ({ pickerOpen, setPickerOpen, createNote, monkeyMood, setMonkeyMood
                   <path d="M 45 52 C 50 50, 55 52, 55 52" fill="transparent" stroke="var(--stroke)" strokeWidth="2" />
                 ) : monkeyMood === 'playing' ? (
                   <path d="M 42 48 Q 50 58 58 48" fill="none" stroke="var(--stroke)" strokeWidth="2" strokeLinecap="round" />
+                ) : monkeyMood === 'typing' ? (
+                  <path d="M 45 53 L 55 53" fill="none" stroke="var(--stroke)" strokeWidth="2" strokeLinecap="round" />
                 ) : (
                   <path d="M 45 50 C 50 55, 55 50, 55 50" fill="transparent" stroke="var(--stroke)" strokeWidth="2" />
                 )}
@@ -146,6 +214,19 @@ const Desk = ({ pickerOpen, setPickerOpen, createNote, monkeyMood, setMonkeyMood
                     {/* Confetti / stars */}
                     <text x="75" y="25" fontSize="20" style={{ pointerEvents: 'none' }}>✨</text>
                     <text x="-5" y="25" fontSize="20" style={{ pointerEvents: 'none' }}>💥</text>
+                  </g>
+                ) : monkeyMood === 'typing' ? (
+                  <g>
+                    {/* Left arm typing */}
+                    <path d="M 15 80 Q 25 75 35 85" fill="none" stroke="#a47250" strokeWidth="12" strokeLinecap="round" className="typing-left" />
+                    <path d="M 15 80 Q 25 75 35 85" fill="none" stroke="var(--stroke)" strokeWidth="16" strokeLinecap="round" opacity="0.2" className="typing-left" />
+                    
+                    {/* Right arm typing */}
+                    <path d="M 85 80 Q 75 75 65 85" fill="none" stroke="#a47250" strokeWidth="12" strokeLinecap="round" className="typing-right" />
+                    <path d="M 85 80 Q 75 75 65 85" fill="none" stroke="var(--stroke)" strokeWidth="16" strokeLinecap="round" opacity="0.2" className="typing-right" />
+                    
+                    {/* Music note / focus indicator */}
+                    <text x="5" y="40" fontSize="20" style={{ pointerEvents: 'none', animation: 'steam-rise 3s infinite' }}>🎵</text>
                   </g>
                 ) : (
                   <>
