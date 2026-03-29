@@ -54,7 +54,11 @@ const Desk = ({ pickerOpen, setPickerOpen, createNote, monkeyMood, setMonkeyMood
             
             {/* Monkey Character */}
             <div 
-              onClick={() => setMonkeyMood(monkeyMood === 'eating' ? 'sleeping' : 'eating')}
+              onClick={() => {
+                if (monkeyMood === 'eating') setMonkeyMood('sleeping');
+                else if (monkeyMood === 'sleeping') setMonkeyMood('playing');
+                else setMonkeyMood('eating');
+              }}
               style={{
                 width: '180px',
                 height: '180px',
@@ -99,6 +103,11 @@ const Desk = ({ pickerOpen, setPickerOpen, createNote, monkeyMood, setMonkeyMood
                     <path d="M 35 38 43 38" stroke="var(--stroke)" strokeWidth="3" strokeLinecap="round" />
                     <path d="M 57 38 65 38" stroke="var(--stroke)" strokeWidth="3" strokeLinecap="round" />
                   </>
+                ) : monkeyMood === 'playing' ? (
+                  <>
+                    <path d="M 35 40 Q 40 32 45 40" fill="none" stroke="var(--stroke)" strokeWidth="3" strokeLinecap="round" />
+                    <path d="M 55 40 Q 60 32 65 40" fill="none" stroke="var(--stroke)" strokeWidth="3" strokeLinecap="round" />
+                  </>
                 ) : (
                   <>
                     <circle cx="40" cy="38" r="4" fill="var(--stroke)" />
@@ -110,24 +119,33 @@ const Desk = ({ pickerOpen, setPickerOpen, createNote, monkeyMood, setMonkeyMood
                 <ellipse cx="50" cy="50" rx="14" ry="10" fill="#d2a884" stroke="var(--stroke)" strokeWidth="2" />
                 {monkeyMood === 'sleeping' ? (
                   <path d="M 45 52 C 50 50, 55 52, 55 52" fill="transparent" stroke="var(--stroke)" strokeWidth="2" />
+                ) : monkeyMood === 'playing' ? (
+                  <path d="M 42 48 Q 50 58 58 48" fill="none" stroke="var(--stroke)" strokeWidth="2" strokeLinecap="round" />
                 ) : (
                   <path d="M 45 50 C 50 55, 55 50, 55 50" fill="transparent" stroke="var(--stroke)" strokeWidth="2" />
                 )}
 
-                {/* Animation logic for arms and banana */}
+                {/* Animation logic for arms and props */}
                 {monkeyMood === 'eating' ? (
                   <g className="eating-animation">
-                    {/* Banana in hand */}
-                    <path d="M 60 70 Q 55 85 75 92" fill="none" stroke="#facc15" strokeWidth="8" strokeLinecap="round" />
-                    {/* Banana peel lines */}
-                    <path d="M 60 70 Q 55 78 54 85" fill="none" stroke="#fef08a" strokeWidth="3" strokeLinecap="round" />
-                    <path d="M 60 70 Q 62 80 64 88" fill="none" stroke="#fef08a" strokeWidth="3" strokeLinecap="round" />
-                    {/* Banana Tip */}
-                    <path d="M 72 90 L 76 92" stroke="var(--stroke)" strokeWidth="3" strokeLinecap="round"/>
-
+                    {/* Banana emoji in hand */}
+                    <text x="50" y="88" fontSize="30" style={{ pointerEvents: 'none' }}>🍌</text>
                     {/* Arm moving up */}
                     <path d="M 85 85 Q 75 80 70 75" fill="none" stroke="#a47250" strokeWidth="12" strokeLinecap="round" />
-                    <path d="M 85 85 Q 75 80 70 75" fill="none" stroke="var(--stroke)" strokeWidth="16" strokeLinecap="round" opacity="0.2" /> {/* outline fake */}
+                    <path d="M 85 85 Q 75 80 70 75" fill="none" stroke="var(--stroke)" strokeWidth="16" strokeLinecap="round" opacity="0.2" />
+                  </g>
+                ) : monkeyMood === 'playing' ? (
+                  <g className="celebrate-animation">
+                    {/* Both arms up */}
+                    <path d="M 15 80 Q -5 60 10 30" fill="none" stroke="#a47250" strokeWidth="12" strokeLinecap="round" />
+                    <path d="M 15 80 Q -5 60 10 30" fill="none" stroke="var(--stroke)" strokeWidth="16" strokeLinecap="round" opacity="0.2" />
+                    
+                    <path d="M 85 80 Q 105 60 90 30" fill="none" stroke="#a47250" strokeWidth="12" strokeLinecap="round" />
+                    <path d="M 85 80 Q 105 60 90 30" fill="none" stroke="var(--stroke)" strokeWidth="16" strokeLinecap="round" opacity="0.2" />
+                    
+                    {/* Confetti / stars */}
+                    <text x="75" y="25" fontSize="20" style={{ pointerEvents: 'none' }}>✨</text>
+                    <text x="-5" y="25" fontSize="20" style={{ pointerEvents: 'none' }}>💥</text>
                   </g>
                 ) : (
                   <>
@@ -161,16 +179,14 @@ const Desk = ({ pickerOpen, setPickerOpen, createNote, monkeyMood, setMonkeyMood
                {monkeyMood === 'sleeping' && (
                  <div style={{
                    position: 'absolute',
-                   bottom: '-15px',
-                   right: '-40px',
+                   bottom: '-5px',
+                   right: '-30px',
                    width: '40px',
                    height: '40px',
                    transform: 'rotate(-20deg)'
                  }}>
                    <svg viewBox="0 0 50 50">
-                     <path d="M 10 25 Q 25 45 40 25" fill="none" stroke="#facc15" strokeWidth="10" strokeLinecap="round" />
-                     <path d="M 10 25 Q 25 45 40 25" fill="none" stroke="var(--stroke)" strokeWidth="12" strokeLinecap="round" opacity="0.2" />
-                     <path d="M 37 27 L 42 21" stroke="var(--stroke)" strokeWidth="3" strokeLinecap="round"/> {/* Tip */}
+                     <text x="0" y="30" fontSize="30" style={{ pointerEvents: 'none' }}>🍌</text>
                    </svg>
                  </div>
                )}

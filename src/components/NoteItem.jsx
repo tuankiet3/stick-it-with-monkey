@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
 
 const NoteItem = ({ note, onClick, updateNote }) => {
+  const isDragging = useRef(false);
   // Styles based on note type
   const getNoteStyle = () => {
     switch(note.type) {
@@ -30,13 +31,11 @@ const NoteItem = ({ note, onClick, updateNote }) => {
 
   return (
     <motion.button 
-      onClick={(e) => {
-        e.stopPropagation();
-        onClick();
+      onDragStart={() => {
+        isDragging.current = true;
       }}
-      drag
-      dragMomentum={false}
       onDragEnd={(e, info) => {
+        setTimeout(() => { isDragging.current = false; }, 100);
         if (updateNote) {
           updateNote(note.id, { 
             x: (note.x || 0) + info.offset.x, 
@@ -44,6 +43,13 @@ const NoteItem = ({ note, onClick, updateNote }) => {
           });
         }
       }}
+      onClick={(e) => {
+        if (!isDragging.current) {
+          e.stopPropagation();
+          onClick();
+        }
+      }}
+      drag
       initial={{ scale: 0, x: note.x || 0, y: note.y || 0 }}
       animate={{ scale: 1, x: note.x || 0, y: note.y || 0, rotate: note.id.charCodeAt(0) % 10 - 5 }}
       whileDrag={{ scale: 1.1, zIndex: 100 }}

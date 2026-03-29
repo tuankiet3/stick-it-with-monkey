@@ -80,3 +80,13 @@ textarea::-webkit-scrollbar-thumb {
   animation: munch 0.6s infinite ease-in-out;
   transform-origin: 80px 85px; /* Base of the arm */
 }
+
+@keyframes celebrate-hands {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+
+.celebrate-animation {
+  animation: celebrate-hands 0.5s infinite ease-in-out;
+}
