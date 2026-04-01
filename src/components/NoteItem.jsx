@@ -29,9 +29,20 @@ const NoteItem = ({ note, onClick, updateNote }) => {
     }
   };
 
-  // Prevent notes from rendering off-screen when jumping from desktop to mobile
+  // Compute physical pixel coordinates from stored percentages
+  let boardWidth = typeof window !== 'undefined' ? window.innerWidth * 0.8 : 800;
+  let boardHeight = typeof window !== 'undefined' ? window.innerHeight * 0.8 : 600;
+  if (typeof window !== 'undefined' && window.innerWidth <= 850) {
+    boardWidth = window.innerWidth * 0.95;
+    boardHeight = window.innerHeight * 0.95;
+  }
+  
+  // Legacy support for absolute pixel notes
   const safeX = typeof window !== 'undefined' ? Math.min(Math.max(0, note.x || 0), window.innerWidth - 80) : note.x || 0;
   const safeY = typeof window !== 'undefined' ? Math.min(Math.max(0, note.y || 0), window.innerHeight * 0.7 - 80) : note.y || 0;
+
+  const calculatedX = note.xp !== undefined ? (note.xp / 100) * boardWidth : safeX;
+  const calculatedY = note.yp !== undefined ? (note.yp / 100) * boardHeight : safeY;
 
   return (
     <motion.button 
@@ -40,10 +51,22 @@ const NoteItem = ({ note, onClick, updateNote }) => {
       }}
       onDragEnd={(e, info) => {
         setTimeout(() => { isDragging.current = false; }, 100);
+        
+        let boardW = window.innerWidth * 0.8;
+        let boardH = window.innerHeight * 0.8;
+        if (window.innerWidth <= 850) {
+          boardW = window.innerWidth * 0.95;
+          boardH = window.innerHeight * 0.95;
+        }
+
+        const newPx = calculatedX + info.offset.x;
+        const newPy = calculatedY + info.offset.y;
+
         if (updateNote) {
           updateNote(note.id, { 
-            x: (note.x || 0) + info.offset.x, 
-            y: (note.y || 0) + info.offset.y 
+            xp: (newPx / boardW) * 100,
+            yp: (newPy / boardH) * 100,
+            x: undefined, y: undefined // migration 
           });
         }
       }}
@@ -54,8 +77,8 @@ const NoteItem = ({ note, onClick, updateNote }) => {
         }
       }}
       drag
-      initial={{ scale: 0, x: safeX, y: safeY }}
-      animate={{ scale: 1, x: safeX, y: safeY, rotate: note.id.charCodeAt(0) % 10 - 5 }}
+      initial={{ scale: 0, x: calculatedX, y: calculatedY }}
+      animate={{ scale: 1, x: calculatedX, y: calculatedY, rotate: note.id.charCodeAt(0) % 10 - 5 }}
       whileDrag={{ scale: 1.1, zIndex: 100 }}
       className={`hand-drawn shadow`}
       style={{

@@ -70,13 +70,16 @@ function App() {
 
   const handleBoardClick = (e) => {
     if (placingNote) {
-      // Get coordinates relative to the board
+      // Get coordinates relative to the board in percentages so they scale seamlessly
       const boardRect = e.currentTarget.getBoundingClientRect();
-      // Adjust standard offset assuming click is center of note
-      const x = e.clientX - boardRect.left - 50; 
-      const y = e.clientY - boardRect.top - 50;
+      // Adjust standard offset assuming click is center of note (30x 35y offset for 60x70 note)
+      const px = e.clientX - boardRect.left - 30; 
+      const py = e.clientY - boardRect.top - 35;
       
-      updateNote(placingNote, { isPinned: true, x, y, zIndex: Date.now() });
+      const xp = (px / boardRect.width) * 100;
+      const yp = (py / boardRect.height) * 100;
+      
+      updateNote(placingNote, { isPinned: true, xp, yp, x: undefined, y: undefined, zIndex: Date.now() });
       setPlacingNote(null);
     }
   };
