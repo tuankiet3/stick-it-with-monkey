@@ -43,7 +43,7 @@ const Corkboard = ({ notes, onBoardClick, onNoteClick, placingNote, updateNote }
         }}
       >
         {/* Digital Clock */}
-        <div style={{ 
+        <div className="desktop-only" style={{ 
           position: 'absolute', top: '5%', left: '50%', transform: 'translateX(-50%)', zIndex: 0,
           background: '#e8e8e8', border: '4px solid var(--stroke)', borderRadius: '8px',
           padding: '5px 20px', display: 'flex', alignItems: 'center', justifyContent: 'center',
@@ -71,7 +71,7 @@ const Corkboard = ({ notes, onBoardClick, onNoteClick, placingNote, updateNote }
           <div style={{ position: 'absolute', top: '5px', left: '50%', transform: 'translateX(-50%)', width: '14px', height: '14px', borderRadius: '50%', background: '#d34343', boxShadow: '0 2px 2px rgba(0,0,0,0.3)', border: '2px solid var(--stroke)' }} />
         </div>
 
-        <div style={{ position: 'absolute', top: '45%', left: '8%', zIndex: 0, transform: 'rotate(-8deg)' }}>
+        <div className="desktop-only" style={{ position: 'absolute', top: '45%', left: '8%', zIndex: 0, transform: 'rotate(-8deg)' }}>
           <div style={{ width: '90px', height: '90px', background: '#fff9c4', display: 'flex', flexDirection: 'column', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>
             <div style={{ background: '#d34343', color: 'white', textAlign: 'center', fontWeight: 'bold', fontSize: '16px', padding: '2px 0', borderBottom: '2px solid var(--stroke)' }}>{monthStr}</div>
             <div style={{ flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '42px', fontWeight: 'bold', fontFamily: 'var(--font-body)', color: '#333' }}>{dateStr}</div>
