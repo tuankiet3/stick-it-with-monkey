@@ -119,3 +119,28 @@ textarea::-webkit-scrollbar-thumb {
   animation-delay: 1s;
 }
 
+/* --- Responsive Design --- */
+
+@media (max-width: 850px) {
+  .desktop-only {
+    display: none !important;
+  }
+  
+  /* Maximize functional space on smaller screens */
+  .corkboard {
+    width: 95% !important;
+    height: 95% !important;
+  }
+}
+
+@media (max-width: 500px) {
+  .monkey-scale {
+    transform: scale(0.75);
+    transform-origin: bottom center;
+  }
+  .desk-mobile {
+    width: 100% !important;
+    padding: 0 10px !important;
+  }
+}
+

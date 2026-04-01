@@ -36,7 +36,9 @@ const Desk = ({ pickerOpen, setPickerOpen, createNote, monkeyMood, setMonkeyMood
         }} />
 
         {/* Char & Props container */}
-        <div style={{
+        <div 
+          className="desk-mobile"
+          style={{
           position: 'absolute',
           bottom: '4vh',
           width: '80%',
@@ -55,7 +57,7 @@ const Desk = ({ pickerOpen, setPickerOpen, createNote, monkeyMood, setMonkeyMood
           <div style={{ display: 'flex', alignItems: 'flex-end', gap: '20px', position: 'relative' }}>
             
             {/* Plant */}
-            <div style={{ zIndex: 1, pointerEvents: 'none', marginBottom: '-5px' }}>
+            <div className="desktop-only" style={{ zIndex: 1, pointerEvents: 'none', marginBottom: '-5px' }}>
               <svg width="50" height="65" viewBox="0 0 50 65" style={{ overflow: 'visible' }}>
                 <path d="M 15 40 L 35 40 L 30 65 L 20 65 Z" fill="#c49779" stroke="var(--stroke)" strokeWidth="2" /> {/* pot */}
                 <path d="M 25 40 C 15 30, 15 15, 25 10 C 35 15, 35 30, 25 40 Z" fill="#7ba36e" stroke="var(--stroke)" strokeWidth="2" /> {/* leaf 1 */}
@@ -65,7 +67,7 @@ const Desk = ({ pickerOpen, setPickerOpen, createNote, monkeyMood, setMonkeyMood
             </div>
 
             {/* Monkey & Laptop Group */}
-            <div style={{ display: 'flex', alignItems: 'flex-end' }}>
+            <div className="monkey-scale" style={{ display: 'flex', alignItems: 'flex-end' }}>
               {/* Monkey Character */}
             <div 
               onClick={() => {
@@ -229,7 +231,7 @@ const Desk = ({ pickerOpen, setPickerOpen, createNote, monkeyMood, setMonkeyMood
             </div>
 
             {/* Coffee Mug */}
-            <div style={{ zIndex: 4, pointerEvents: 'none', marginBottom: '-5px' }}>
+            <div className="desktop-only" style={{ zIndex: 4, pointerEvents: 'none', marginBottom: '-5px' }}>
               <svg width="50" height="45" viewBox="0 0 50 45" style={{ overflow: 'visible' }}>
                 <g className="steam-animation">
                   <path d="M 15 15 Q 18 10 15 5 T 15 -5" fill="none" stroke="#ccc" strokeWidth="2" strokeLinecap="round" />
@@ -242,7 +244,7 @@ const Desk = ({ pickerOpen, setPickerOpen, createNote, monkeyMood, setMonkeyMood
             </div>
 
             {/* Books */}
-            <div style={{ zIndex: 2, pointerEvents: 'none', marginBottom: '-5px' }}>
+            <div className="desktop-only" style={{ zIndex: 2, pointerEvents: 'none', marginBottom: '-5px' }}>
               <svg width="80" height="46" viewBox="0 0 80 46" style={{ overflow: 'visible' }}>
                 <rect x="5" y="10" width="65" height="12" fill="#a3bccc" stroke="var(--stroke)" strokeWidth="2" transform="rotate(-3)" />
                 <rect x="15" y="20" width="55" height="12" fill="#7ba36e" stroke="var(--stroke)" strokeWidth="2" />
@@ -256,7 +258,7 @@ const Desk = ({ pickerOpen, setPickerOpen, createNote, monkeyMood, setMonkeyMood
           <div style={{ display: 'flex', alignItems: 'flex-end', gap: '20px' }}>
 
             {/* Desk Lamp */}
-            <div style={{ zIndex: 1, pointerEvents: 'none', marginBottom: '-5px' }}>
+            <div className="desktop-only" style={{ zIndex: 1, pointerEvents: 'none', marginBottom: '-5px' }}>
               <svg width="100" height="110" viewBox="0 0 100 110" style={{ overflow: 'visible' }}>
                 <path d="M 30 110 L 70 110 L 65 100 L 35 100 Z" fill="#586776" stroke="var(--stroke)" strokeWidth="2" /> {/* base */}
                 <path d="M 50 100 L 50 50" fill="none" stroke="var(--stroke)" strokeWidth="6" /> {/* stand */}
@@ -340,7 +342,7 @@ const Desk = ({ pickerOpen, setPickerOpen, createNote, monkeyMood, setMonkeyMood
             </div>
 
             {/* Glasses */}
-            <div style={{ zIndex: 6, pointerEvents: 'none', marginBottom: '-5px' }}>
+            <div className="desktop-only" style={{ zIndex: 6, pointerEvents: 'none', marginBottom: '-5px' }}>
               <svg width="100" height="35" viewBox="0 0 100 35" style={{ overflow: 'visible' }}>
                 <rect x="10" y="10" width="35" height="25" rx="5" fill="#eaf4f4" stroke="var(--stroke)" strokeWidth="3" />
                 <rect x="55" y="10" width="35" height="25" rx="5" fill="#eaf4f4" stroke="var(--stroke)" strokeWidth="3" />

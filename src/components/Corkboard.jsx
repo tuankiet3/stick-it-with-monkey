@@ -58,7 +58,7 @@ const Corkboard = ({ notes, onBoardClick, onNoteClick, placingNote, updateNote }
           </div>
         </div>
 
-        <div style={{ position: 'absolute', top: '15%', right: '12%', zIndex: 0, transform: 'rotate(5deg)' }}>
+        <div className="desktop-only" style={{ position: 'absolute', top: '15%', right: '12%', zIndex: 0, transform: 'rotate(5deg)' }}>
           <div style={{ width: '130px', height: '150px', background: '#f8f8f8', padding: '10px', paddingBottom: '30px', boxShadow: '0 4px 6px rgba(0,0,0,0.2)' }}>
             <div style={{ width: '100%', height: '90px', background: '#a3bccc', display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '50px' }}>
               🌴
@@ -81,7 +81,7 @@ const Corkboard = ({ notes, onBoardClick, onNoteClick, placingNote, updateNote }
         </div>
 
         {/* Coffee Break Sticky */}
-        <div style={{ position: 'absolute', top: '65%', right: '25%', zIndex: 0, transform: 'rotate(-4deg)' }}>
+        <div className="desktop-only" style={{ position: 'absolute', top: '65%', right: '25%', zIndex: 0, transform: 'rotate(-4deg)' }}>
           <div style={{ width: '90px', height: '90px', background: '#ffb3ba', boxShadow: '2px 2px 5px rgba(0,0,0,0.1)', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
             <span style={{ fontSize: '32px' }}>☕</span>
             <span style={{ fontFamily: 'var(--font-handwriting)', fontSize: '15px', color: '#553' }}>Break!</span>
@@ -90,7 +90,7 @@ const Corkboard = ({ notes, onBoardClick, onNoteClick, placingNote, updateNote }
         </div>
 
         {/* Postcard Stamp */}
-        <div style={{ position: 'absolute', top: '25%', left: '25%', zIndex: 0, transform: 'rotate(-10deg)' }}>
+        <div className="desktop-only" style={{ position: 'absolute', top: '25%', left: '25%', zIndex: 0, transform: 'rotate(-10deg)' }}>
           <div style={{ width: '60px', height: '70px', background: 'white', padding: '5px', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>
             <div style={{ border: '2px dashed #ccc', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '30px' }}>
               🗼
@@ -100,7 +100,7 @@ const Corkboard = ({ notes, onBoardClick, onNoteClick, placingNote, updateNote }
         </div>
 
         {/* Movie Ticket */}
-        <div style={{ position: 'absolute', top: '75%', left: '15%', zIndex: 0, transform: 'rotate(12deg)' }}>
+        <div className="desktop-only" style={{ position: 'absolute', top: '75%', left: '15%', zIndex: 0, transform: 'rotate(12deg)' }}>
           <div style={{ width: '120px', height: '40px', background: '#ffdfba', border: '2px dashed #e6c8a6', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>
             <span style={{ fontFamily: 'monospace', fontWeight: 'bold', fontSize: '14px', letterSpacing: '2px', color: '#d34343' }}>ADMIT ONE</span>
           </div>
