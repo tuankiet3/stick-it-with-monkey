@@ -29,6 +29,10 @@ const NoteItem = ({ note, onClick, updateNote }) => {
     }
   };
 
+  // Prevent notes from rendering off-screen when jumping from desktop to mobile
+  const safeX = typeof window !== 'undefined' ? Math.min(Math.max(0, note.x || 0), window.innerWidth - 80) : note.x || 0;
+  const safeY = typeof window !== 'undefined' ? Math.min(Math.max(0, note.y || 0), window.innerHeight * 0.7 - 80) : note.y || 0;
+
   return (
     <motion.button 
       onDragStart={() => {
@@ -50,8 +54,8 @@ const NoteItem = ({ note, onClick, updateNote }) => {
         }
       }}
       drag
-      initial={{ scale: 0, x: note.x || 0, y: note.y || 0 }}
-      animate={{ scale: 1, x: note.x || 0, y: note.y || 0, rotate: note.id.charCodeAt(0) % 10 - 5 }}
+      initial={{ scale: 0, x: safeX, y: safeY }}
+      animate={{ scale: 1, x: safeX, y: safeY, rotate: note.id.charCodeAt(0) % 10 - 5 }}
       whileDrag={{ scale: 1.1, zIndex: 100 }}
       className={`hand-drawn shadow`}
       style={{

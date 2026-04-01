@@ -41,6 +41,8 @@ const Desk = ({ pickerOpen, setPickerOpen, createNote, monkeyMood, setMonkeyMood
           style={{
           position: 'absolute',
           bottom: '4vh',
+          left: '50%',
+          transform: 'translateX(-50%)',
           width: '80%',
           maxWidth: '800px',
           height: '100%',

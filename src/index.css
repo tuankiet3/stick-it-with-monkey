@@ -135,12 +135,25 @@ textarea::-webkit-scrollbar-thumb {
 
 @media (max-width: 500px) {
   .monkey-scale {
-    transform: scale(0.75);
+    transform: scale(0.85);
     transform-origin: bottom center;
   }
   .desk-mobile {
-    width: 100% !important;
+    /* Virtual layout space to prevent children overlapping or getting cut */
+    width: 480px !important; 
     padding: 0 10px !important;
+    justify-content: center !important;
+    gap: 15px !important; 
+    
+    /* Visually scale to fit the physical screen */
+    transform: translateX(-50%) scale(0.8) !important;
+    transform-origin: bottom center;
+  }
+}
+
+@media (max-width: 400px) {
+  .desk-mobile {
+    transform: translateX(-50%) scale(0.65) !important;
   }
 }
 
